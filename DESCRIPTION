@@ -1,7 +1,7 @@
 Package: CREGR
 Title: Apply custom visual identity to figures for CREG reports
 Version: 0.0.0.9000
-Authors@R: Nico Schoutteet <nsc@creg.be>
+Authors: Nico Schoutteet <nsc@creg.be>
 Description: This package contains functions to customize colour palettes,  themes and general lay-out elements to ggplot visuals.
 License: `use_gpl3_license()`
 Encoding: UTF-8
