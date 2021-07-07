@@ -29,4 +29,3 @@ colour_CREG <- function(...) {
     return(colour_vector_CREG)
   colour_vector_CREG[[cols]]
 }
-
