@@ -27,5 +27,5 @@ colours_CREG <- function(...) {
   cols <- c(...)
   if (is.null (cols))
     return(colour_vector_CREG)
-  colour_vector_CREG[[cols]]
+  colour_vector_CREG[cols]
 }
