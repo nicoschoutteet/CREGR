@@ -16,16 +16,36 @@ colour_vector_CREG <- c(
   "black" = "#111111"
 )
 
-#' Palette
+#' Colour picker
 #'
 #' @param ...
 #'
 #' @return
 #' @export
 
-colours_CREG <- function(...) {
+colour_CREG <- function(...) {
   cols <- c(...)
   if (is.null (cols))
     return(colour_vector_CREG)
   colour_vector_CREG[cols]
 }
+
+palette_CREG <- list(
+  `countries` = colour_CREG("blue2", "red", "orange", "green", "yellow"),
+  `main` = colour_CREG("blue2", "red", "orange", "green", "yellow", "pink", "purple"),
+  `blue` = colour_CREG("blue2", "blue3", "grey1", "grey2")
+)
+
+#' Colour palette
+#' @description This function defines colour palettes for ggplot objects.
+#'
+#' @param palette A string (possibilities are: "countries", "main", "blue")
+#' @param reverse Logical, define whether the colours need to be applied in reverse order (default = FALSE)
+#' @param ... other
+colour_palette_CREG <- function(palette = "main", reverse = FALSE, ...) {
+  pal <- palette_CREG[[palette]]
+  if (reverse) pal <- rev(pal)
+  colorRampPalette(pal, ...)
+}
+
+getwd()
