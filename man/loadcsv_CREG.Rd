@@ -7,11 +7,11 @@
 loadcsv_CREG(subfolder, filename, col_types)
 }
 \arguments{
-\item{filename}{A string}
+\item{filename}{A stringn, including the name of hte csv file (don't include the extension ".csv" as this is added automatically)}
 
-\item{col_types}{A string}
+\item{col_types}{A string describing, in short form, the column types of the data itself (i.e. not the year, month, day, etc. variables as those are added automatically)}
 
-\item{subfoler}{A string}
+\item{subfoler}{A string, including the subfolder where the csv file is stored}
 }
 \description{
 This function imports a csv file into an R session.
