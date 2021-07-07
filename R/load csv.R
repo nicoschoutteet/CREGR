@@ -7,7 +7,7 @@
 #' @param col_types A string
 #' @examples df <- loadcsv_CREG(filepath = "source data", filename = "loadBE", col_types = "n")
 loadcsv_CREG <- function(subfolder, filename, col_types) {
-  read_delim(paste0(filepath, "/", filename, ".csv"),
+  read_delim(paste0(subfolder, "/", filename, ".csv"),
              delim = ";",
              locale = locale(decimal_mark = ","),
              col_types = paste0("nnnccDcncncnncc", col_types)) %>%
