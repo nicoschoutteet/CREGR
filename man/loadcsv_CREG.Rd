@@ -4,14 +4,14 @@
 \alias{loadcsv_CREG}
 \title{Import csv files which were extracted from DWH}
 \usage{
-loadcsv_CREG(filepath, filename, datatypes)
+loadcsv_CREG(subfolder, filename, col_types)
 }
 \arguments{
-\item{filepath}{A string}
-
 \item{filename}{A string}
 
-\item{datatypes}{A string}
+\item{col_types}{A string}
+
+\item{subfoler}{A string}
 }
 \description{
 This function imports a csv file into an R session.
@@ -19,5 +19,5 @@ The arguments include a reference to a subfolder of the working directory(filepa
 and an indication of the type of column (in abbreviate form, e.g. "n" = numeric, "d" = double, "c" = character).
 }
 \examples{
-df <- loadcsv_CREG(filepath = "source data", filename = "loadBE", datatypes = "n")
+df <- loadcsv_CREG(filepath = "source data", filename = "loadBE", col_types = "n")
 }
