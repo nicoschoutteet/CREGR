@@ -27,7 +27,7 @@ colour_CREG <- function(...) {
   cols <- c(...)
   if (is.null (cols))
     return(colour_vector_CREG)
-  colour_vector_CREG[cols]
+  colour_vector_CREG[[cols]]
 }
 
 palette_CREG <- list(
@@ -47,5 +47,3 @@ colour_palette_CREG <- function(palette = "main", reverse = FALSE, ...) {
   if (reverse) pal <- rev(pal)
   colorRampPalette(pal, ...)
 }
-
-getwd()
