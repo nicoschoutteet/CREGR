@@ -2,16 +2,13 @@
 % Please edit documentation in R/save ggplot.R
 \name{save_CREG}
 \alias{save_CREG}
-\title{Title}
+\title{Save ggplot to png file to use in report}
 \usage{
 save_CREG(filename)
 }
-\arguments{
-\item{filename}{}
-}
-\value{
-
-}
 \description{
-Title
+This function saves the last plot that was displayed, in a png file with the dimensions (16 x 10 cm) for easy processing in Word reports. The document is saved, by default, in the working directory.
+}
+\examples{
+save_CREG(filename = "figure")
 }

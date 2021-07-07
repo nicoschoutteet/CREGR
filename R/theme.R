@@ -1,9 +1,8 @@
-# ggplot theme ------------------------------------------------------------
-# either call explicitly in ggplot, via + theme_CREG()
-# or set at beginning of each session via theme_set(theme_CREG)
-
-#' CREG_theme()
-#'
+#' Apply custom CREG theme to ggplot visuals
+#' @examples ggplot(data = mpg) +
+#' geom_point(mapping = aes(x = displ, y = hwy)) +
+#' theme_CREG()
+#' @description This function applies a custom theme, based on the CREG Style Guide, for the lay-out and colors of ggplot visuals. The colors are based on the CREG pallete, defined in the colours_CREG() function.
 #' @return
 #' @export
 
