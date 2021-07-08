@@ -7,6 +7,7 @@
 #' @param col_types A string describing, in short form, the column types of the data itself (i.e. not the year, month, day, etc. variables as those are added automatically)
 #' @examples df <- loadcsv_CREG(filepath = "source data", filename = "loadBE", col_types = "n") %>%
 #' left_join(filepath = "source data", filename = "loadNL", col_types = "n")
+#' @export
 
 leftjoin_CREG <- function(subfolder, filename, col_types) {
   left_join(select(loadCSV_CREG(subfolder, filename, col_types),

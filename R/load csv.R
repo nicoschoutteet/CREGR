@@ -6,6 +6,7 @@
 #' @param filename A stringn, including the name of hte csv file (don't include the extension ".csv" as this is added automatically)
 #' @param col_types A string describing, in short form, the column types of the data itself (i.e. not the year, month, day, etc. variables as those are added automatically)
 #' @examples df <- loadcsv_CREG(filepath = "source data", filename = "loadBE", col_types = "n")
+#' @export
 
 loadcsv_CREG <- function(subfolder, filename, col_types) {
   read_delim(paste0(subfolder, "/", filename, ".csv"),
