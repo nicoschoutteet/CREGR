@@ -10,7 +10,7 @@
 #' @export
 
 leftjoin_CREG <- function(subfolder, filename, col_types) {
-  left_join(select(loadCSV_CREG(subfolder, filename, col_types),
+  left_join(select(loadcsv_CREG(subfolder, filename, col_types),
             DateTime, last_col(1:nchar(col_types)),
             by = c("DateTime" = "DateTime"),
             keep = FALSE))
