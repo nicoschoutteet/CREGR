@@ -2,5 +2,3 @@
 
 export(colour_CREG)
 export(theme_CREG)
-export(save_CREG)
-export(loadcsv_CREG)
