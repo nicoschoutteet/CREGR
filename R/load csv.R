@@ -27,18 +27,18 @@ loadcsv_CREG <- function(subfolder, filename, col_types) {
 #' @export
 
 loadmultiplecsv_CREG <- function(subfolder, filenames, col_types) {
-  tempfilepaths <<- paste0(subfolder, "/", filenames, ".csv")
-  tempcoltypes <<- paste0("nnnccDcncncnncc", col_types)
-  dataframelist <<- list()
+  tempfilepaths <- paste0(subfolder, "/", filenames, ".csv")
+  tempcoltypes <- paste0("nnnccDcncncnncc", col_types)
+  dataframelist <- list()
   for (i in 1) {
-    dataframelist[[i]] <<- read_delim(tempfilepaths[[i]],
+    dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
                                       delim = ";",
                                       col_types = tempcoltypes[[i]],
                                       locale = locale(decimal_mark = ",")) %>%
       mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels"))
   }
   for (i in seq(2, length(tempfilepaths))) {
-    dataframelist[[i]] <<- read_delim(tempfilepaths[[i]],
+    dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
                                       delim = ";",
                                       col_types = tempcoltypes[[i]],
                                       locale = locale(decimal_mark = ",")) %>%
