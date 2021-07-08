@@ -2,3 +2,6 @@
 
 export(colour_CREG)
 export(theme_CREG)
+export(colour_CREG)
+export(loadCSV_CREG)
+export(leftjoin_CREG)
