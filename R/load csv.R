@@ -13,7 +13,8 @@ loadcsv_CREG <- function(subfolder, filename, col_types) {
              delim = ";",
              locale = locale(decimal_mark = ","),
              col_types = paste0("nnnccDcncncnncc", col_types)) %>%
-    mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels"))
+    mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels")) %>%
+    select(DateTime, everything())
 }
 
 #' Import multiple csv files which were extracted from DWH and join them
@@ -45,5 +46,7 @@ loadmultiplecsv_CREG <- function(subfolder, filenames, col_types) {
       mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels")) %>%
       select(DateTime, last_col(1:nchar(col_types[[i]])))
   }
-  plyr::join_all(dataframelist, by = "DateTime", type = "left")
+  plyr::join_all(dataframelist, by = "DateTime", type = "left") %>%
+  select(DateTime, everything())
+
 }
