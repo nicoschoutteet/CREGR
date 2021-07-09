@@ -17,11 +17,17 @@ devtools::install_github("nicoschoutteet/CREGR")
 ```
 
 ## List of functions
-* colour_CREG
-* theme_CREG
-* loadcsv_CREG
-* loadmultiplecsv_CREG
-* save_CREG
+* colour_CREG()
+* theme_CREG()
+* loadcsv_CREG()
+* loadmultiplecsv_CREG()
+* save_CREG()
+
+Information on how to use these functions (including which arguments to declare) may be found in the dedicated description pages, accessible via the "?" command:
+
+```{r}
+?theme_CREG()
+```
 
 ## Questions?
 Questions or comments may be addressed to Nico Schoutteet - nico.schoutteet@creg.be
