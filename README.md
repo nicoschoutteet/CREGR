@@ -24,6 +24,8 @@ library(CREGR)
 * loadmultiplecsv_CREG()
 * save_CREG()
 
+The suffix "_CREG" is used to distinguish these functions from existing tidyverse versions of the same functions.
+
 Information on how to use these functions (including which arguments to declare) may be found in the dedicated description pages, accessible via the "?" command:
 
 ```{r}
