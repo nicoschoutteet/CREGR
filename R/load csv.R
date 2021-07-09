@@ -5,6 +5,7 @@
 #' @param subfolder A string, including the subfolder where the csv file is stored
 #' @param filename A string, including the name of the csv file (don't include the extension ".csv" as this is added automatically)
 #' @param col_types A string describing, in short form, the column types of the data itself (i.e. not the year, month, day, etc. variables as those are added automatically)
+#' @param quarterlyresolution A string describing whether hourly (FALSE) or quarterly (TRUE) data are imported (default value = FALSE)
 #' @examples df <- loadcsv_CREG(filepath = "source data", filename = "loadBE", col_types = "n")
 #' @export
 
@@ -23,6 +24,7 @@ loadcsv_CREG <- function(subfolder, filename, col_types, quarterlyresolution = F
                col_types = paste0("nnnccDcncncnnncc", col_types)) %>%
     mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels")) %>%
     select(DateTime, everything())
+    }
 }
 
 #' Import multiple csv files which were extracted from DWH and join them
@@ -32,7 +34,8 @@ loadcsv_CREG <- function(subfolder, filename, col_types, quarterlyresolution = F
 #' @param subfodler A string, including the subfolder where the csv file is stored
 #' @param filename A string vector, including the name of the csv file (don't include the extension ".csv" as this is added automatically) (e.g. c("loadBE", "loadNL"))
 #' @param col_types A string vector, describing, in short form, the column types of the data itself (i.e. not the year, month, day, etc. variables as those are added automatically) (e.g. c("nn", "nnnn"))
-#' @examples df <- loadmultiplecsv_CREG(filepath = "source data", filename = "loadBE", col_types = "n")
+#' @param quarterlyresolution A string vector, describing whether hourly or quarterly data are inmported (e.g. "q")
+#' @examples df <- loadmultiplecsv_CREG(filepath = "source data", filename = c("loadBE", "loadNL"), col_types = c("n", "n"), quarterlyresolution = c("h", "h"))
 #' @export
 
 loadmultiplecsv_CREG <- function(subfolder, filenames, col_types, quarterlyresolution) {
@@ -42,7 +45,7 @@ loadmultiplecsv_CREG <- function(subfolder, filenames, col_types, quarterlyresol
   quarterlyresolution <- quarterlyresolution
   dataframelist <- list()
   for (i in 1) {
-    if (quarterlyresolution[[i]] == "h") { 
+    if (quarterlyresolution[[i]] == "h") {
       dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
                                        delim = ";",
                                        col_types = tempcoltypesh[[i]],
@@ -57,7 +60,7 @@ loadmultiplecsv_CREG <- function(subfolder, filenames, col_types, quarterlyresol
       }
   }
   for (i in seq(2, length(tempfilepaths))) {
-    if (quarterlyresolution[[i]] == "h") { 
+    if (quarterlyresolution[[i]] == "h") {
       dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
                                        delim = ";",
                                        col_types = tempcoltypesh[[i]],
@@ -75,5 +78,4 @@ loadmultiplecsv_CREG <- function(subfolder, filenames, col_types, quarterlyresol
   }
   plyr::join_all(dataframelist, by = "DateTime", type = "left") %>%
   select(DateTime, everything())
-
 }
