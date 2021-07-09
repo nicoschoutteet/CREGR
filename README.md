@@ -16,6 +16,11 @@ install.packages("devtools")
 devtools::install_github("nicoschoutteet/CREGR")
 ```r
 
+## List of functions
+
+
 ## Questions?
 Questions or comments may be addressed to Nico Schoutteet - nico.schoutteet@creg.be
  
+***
+image: ![](pictures/CREG.png)
