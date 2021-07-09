@@ -8,8 +8,8 @@
 #' @examples df <- loadcsv_CREG(filepath = "source data", filename = "loadBE", col_types = "n")
 #' @export
 
-loadcsv_CREG <- function(subfolder, filename, col_types, quaterlyresolution = FALSE) {
-  if (quarterlyresultion == FALSE) {
+loadcsv_CREG <- function(subfolder, filename, col_types, quarterlyresolution = FALSE) {
+  if (quarterlyresolution == FALSE) {
     read_delim(paste0(subfolder, "/", filename, ".csv"),
                delim = ";",
                locale = locale(decimal_mark = ","),
