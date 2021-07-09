@@ -51,7 +51,7 @@ loadmultiplecsv_CREG <- function(subfolder, filenames, col_types, quarterlyresol
                                        col_types = tempcoltypesh[[i]],
                                        locale = locale(decimal_mark = ",")) %>%
       mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels"))
-      } else if (quarterlyresolution[[i]] : "q") {
+      } else if (quarterlyresolution[[i]] == "q") {
       dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
                                        delim = ";",
                                        col_types = tempcoltypesq[[i]],
@@ -67,7 +67,7 @@ loadmultiplecsv_CREG <- function(subfolder, filenames, col_types, quarterlyresol
                                        locale = locale(decimal_mark = ",")) %>%
       mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels")) %>%
       select(DateTime, last_col(1:nchar(col_types[[i]])))
-      } else if (quarterlyresolution[[i]] : "q") {
+      } else if (quarterlyresolution[[i]] == "q") {
       dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
                                        delim = ";",
                                        col_types = tempcoltypesq[[i]],
