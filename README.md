@@ -14,10 +14,14 @@ Installing the package may be done directly from source, through the following c
 ```{r}
 install.packages("devtools")
 devtools::install_github("nicoschoutteet/CREGR")
-```r
+```
 
 ## List of functions
-
+* colour_CREG
+* theme_CREG
+* loadcsv_CREG
+* loadmultiplecsv_CREG
+* save_CREG
 
 ## Questions?
 Questions or comments may be addressed to Nico Schoutteet - nico.schoutteet@creg.be
