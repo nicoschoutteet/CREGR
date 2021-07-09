@@ -34,4 +34,4 @@ Information on how to use these functions (including which arguments to declare)
 Questions or comments may be addressed to Nico Schoutteet - nico.schoutteet@creg.be
  
 ***
-image: ![](pictures/CREG.png)
+![](pictures/CREG.png)
