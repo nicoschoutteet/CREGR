@@ -14,6 +14,7 @@ Installing the package may be done directly from source, through the following c
 ```{r}
 install.packages("devtools")
 devtools::install_github("nicoschoutteet/CREGR")
+library(CREGR)
 ```
 
 ## List of functions
