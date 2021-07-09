@@ -8,11 +8,19 @@
 #' @examples df <- loadcsv_CREG(filepath = "source data", filename = "loadBE", col_types = "n")
 #' @export
 
-loadcsv_CREG <- function(subfolder, filename, col_types) {
-  read_delim(paste0(subfolder, "/", filename, ".csv"),
-             delim = ";",
-             locale = locale(decimal_mark = ","),
-             col_types = paste0("nnnccDcncncnncc", col_types)) %>%
+loadcsv_CREG <- function(subfolder, filename, col_types, quaterlyresolution = FALSE) {
+  if (quarterlyresultion == FALSE) {
+    read_delim(paste0(subfolder, "/", filename, ".csv"),
+               delim = ";",
+               locale = locale(decimal_mark = ","),
+               col_types = paste0("nnnccDcncncnncc", col_types)) %>%
+    mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels")) %>%
+    select(DateTime, everything())
+    } else {
+    read_delim(paste0(subfolder, "/", filename, ".csv"),
+               delim = ";",
+               locale = locale(decimal_mark = ","),
+               col_types = paste0("nnnccDcncncnnncc", col_types)) %>%
     mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels")) %>%
     select(DateTime, everything())
 }
@@ -27,24 +35,43 @@ loadcsv_CREG <- function(subfolder, filename, col_types) {
 #' @examples df <- loadmultiplecsv_CREG(filepath = "source data", filename = "loadBE", col_types = "n")
 #' @export
 
-loadmultiplecsv_CREG <- function(subfolder, filenames, col_types) {
+loadmultiplecsv_CREG <- function(subfolder, filenames, col_types, quarterlyresolution) {
   tempfilepaths <- paste0(subfolder, "/", filenames, ".csv")
-  tempcoltypes <- paste0("nnnccDcncncnncc", col_types)
+  tempcoltypesh <- paste0("nnnccDcncncnncc", col_types)
+  tempcoltypesq <- paste0("nnnccDcncncnnncc", col_types)
+  quarterlyresolution <- quarterlyresolution
   dataframelist <- list()
   for (i in 1) {
-    dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
-                                      delim = ";",
-                                      col_types = tempcoltypes[[i]],
-                                      locale = locale(decimal_mark = ",")) %>%
+    if (quarterlyresolution[[i]] == "h") { 
+      dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
+                                       delim = ";",
+                                       col_types = tempcoltypesh[[i]],
+                                       locale = locale(decimal_mark = ",")) %>%
       mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels"))
+      } else if (quarterlyresolution[[i]] : "q") {
+      dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
+                                       delim = ";",
+                                       col_types = tempcoltypesq[[i]],
+                                       locale = locale(decimal_mark = ",")) %>%
+      mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels"))
+      }
   }
   for (i in seq(2, length(tempfilepaths))) {
-    dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
-                                      delim = ";",
-                                      col_types = tempcoltypes[[i]],
-                                      locale = locale(decimal_mark = ",")) %>%
+    if (quarterlyresolution[[i]] == "h") { 
+      dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
+                                       delim = ";",
+                                       col_types = tempcoltypesh[[i]],
+                                       locale = locale(decimal_mark = ",")) %>%
       mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels")) %>%
       select(DateTime, last_col(1:nchar(col_types[[i]])))
+      } else if (quarterlyresolution[[i]] : "q") {
+      dataframelist[[i]] <- read_delim(tempfilepaths[[i]],
+                                       delim = ";",
+                                       col_types = tempcoltypesq[[i]],
+                                       locale = locale(decimal_mark = ",")) %>%
+      mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), tz = "Europe/Brussels")) %>%
+      select(DateTime, last_col(1:nchar(col_types[[i]])))
+      }
   }
   plyr::join_all(dataframelist, by = "DateTime", type = "left") %>%
   select(DateTime, everything())
