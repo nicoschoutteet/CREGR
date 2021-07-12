@@ -32,6 +32,13 @@ Information on how to use these functions (including which arguments to declare)
 ?theme_CREG()
 ```
 
+## Example
+These functions allow to easily modify style and theme elements, to turn default ggplot output (top) into the custom CREG output (bottom):
+
+![](pictures/before.png)
+![](pictures/after.png)
+
+
 ## Questions?
 Questions or comments may be addressed to Nico Schoutteet - nico.schoutteet@creg.be
  

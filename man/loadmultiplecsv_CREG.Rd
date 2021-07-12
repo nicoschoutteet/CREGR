@@ -4,12 +4,12 @@
 \alias{loadmultiplecsv_CREG}
 \title{Import multiple csv files which were extracted from DWH and join them}
 \usage{
-loadmultiplecsv_CREG(subfolder, filenames, col_types, quarterlyresolution)
+loadmultiplecsv_CREG(subfolder, filenames, col_types, resolution)
 }
 \arguments{
 \item{col_types}{A string vector, describing, in short form, the column types of the data itself (i.e. not the year, month, day, etc. variables as those are added automatically) (e.g. c("nn", "nnnn"))}
 
-\item{quarterlyresolution}{A string vector, describing whether hourly or quarterly data are inmported (e.g. "q")}
+\item{resolution}{A string vector, describing whether hourly ("h") or quarterly ("q") data are inmported (e.g. "q")}
 
 \item{subfodler}{A string, including the subfolder where the csv file is stored}
 
