@@ -7,7 +7,7 @@
 #' @export
 
 loadcsv_CREG <- function(filepath) {
-    read_delim(paste0(subfolder, "/", filename, ".csv"),
+    read_delim(filepath,
                delim = ";",
                locale = locale(decimal_mark = ","),
                guess_max = 1000000) %>%
