@@ -41,6 +41,3 @@ These functions allow to easily modify style and theme elements, to turn default
 
 ## Questions?
 Questions or comments may be addressed to Nico Schoutteet - nico.schoutteet@creg.be
- 
-***
-![](pictures/CREG.png)
