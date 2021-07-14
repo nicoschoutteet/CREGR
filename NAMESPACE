@@ -2,6 +2,5 @@
 
 export(colour_CREG)
 export(loadcsv_CREG)
-export(loadmultiplecsv_CREG)
 export(save_CREG)
 export(theme_CREG)

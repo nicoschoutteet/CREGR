@@ -4,16 +4,10 @@
 \alias{loadcsv_CREG}
 \title{Import csv files which were extracted from DWH}
 \usage{
-loadcsv_CREG(subfolder, filename, col_types, resolution = "h")
+loadcsv_CREG(filepath)
 }
 \arguments{
-\item{subfolder}{A string, including the subfolder where the csv file is stored}
-
-\item{filename}{A string, including the name of the csv file (don't include the extension ".csv" as this is added automatically)}
-
-\item{col_types}{A string describing, in short form, the column types of the data itself (i.e. not the year, month, day, etc. variables as those are added automatically)}
-
-\item{resolution}{A string describing whether hourly ("h") or quarterly ("q") data are imported (default value = "h")}
+\item{filepath}{A string, including (if relevant) the subfolder where the csv file is stored (relative to the current working directory)}
 }
 \description{
 This function imports a csv file into an R session.
@@ -21,5 +15,5 @@ The arguments include a reference to a subfolder of the working directory(filepa
 and an indication of the type of column (in abbreviate form, e.g. "n" = numeric, "d" = double, "c" = character).
 }
 \examples{
-df <- loadcsv_CREG(filepath = "source data", filename = "loadBE", col_types = "n")
+df <- loadcsv_CREG(filepath = "source data/loadBelgium.csv")
 }

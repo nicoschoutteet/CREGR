@@ -10,7 +10,7 @@ loadcsv_CREG <- function(filepath) {
     read_delim(paste0(subfolder, "/", filename, ".csv"),
                delim = ";",
                locale = locale(decimal_mark = ","),
-               guess_max = 1000000)) %>%
+               guess_max = 1000000) %>%
     mutate(DateTime = as.POSIXct(paste(YearMonthDayCSV, substr(Quarter, 1, 5)), format = "%Y-%m-%d %H:%M", tz = "Europe/Brussels")) %>%
     select(DateTime, everything())
 }
