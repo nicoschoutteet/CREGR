@@ -1,5 +1,4 @@
-# Colours -----------------------------------------------------------------
-# Loosely based on CREG style guide
+#'@export
 
 CREGcolours <- list(
  default = c("blue1" = "#00B0B9",
