@@ -21,7 +21,6 @@ library(CREGR)
 * colour_CREG()
 * theme_CREG()
 * loadcsv_CREG()
-* loadmultiplecsv_CREG()
 * save_CREG()
 
 The suffix "_CREG" is used to distinguish these functions from existing tidyverse versions of the same functions.
