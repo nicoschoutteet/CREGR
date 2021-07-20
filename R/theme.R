@@ -13,7 +13,7 @@ theme_CREG <- function() {
           plot.title.position = "plot",
           plot.caption = element_text(hjust = 0 , size = 5),
           plot.caption.position = "plot",
-          plot.margin = margin(.5, .5, .5, .5, "cm"),
+          plot.margin = margin(0, 0, 0, 0, "cm"),
           legend.position = "none",
           legend.title = element_text(size = 8, face = "bold"),
           legend.text = element_text(size = 8),
