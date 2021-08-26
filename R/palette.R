@@ -5,7 +5,7 @@ colour_vector_CREG <- c(
   "blue2" = "#005F83",
   "blue3" = "#002D72",
   "blue4" = "#00A9E0",
-  "purple" = "???485CC7",
+  "purple" = "#485CC7",
   "green" = "#78D64B",
   "yellow" = "#EFDF00",
   "orange" = "#FF8200",
