@@ -23,7 +23,7 @@ colour_vector_CREG <- c(
 #' @return
 #' @export
 
-CREGcolour <- function(...) {
+colour_CREG_function <- function(...) {
   cols <- c(...)
   if (is.null (cols))
     return(colour_vector_CREG)
